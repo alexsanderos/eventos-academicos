@@ -1,0 +1,12 @@
+.conteudo-login {
+    margin: 10% 30% 10% 30%;
+}
+
+.container-login {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.container-login > * {
+    width: 100%;
+}

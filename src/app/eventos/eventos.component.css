@@ -1,0 +1,12 @@
+.eventos-card {
+    max-width: 100%;
+  }
+
+  .mat-card {
+       margin-bottom: 5%;
+  }
+  
+  .eventos-header-image {
+    background-image: url('../../assets/csharp-logo.png');
+    background-size: cover;
+  }

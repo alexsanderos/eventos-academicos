@@ -1,0 +1,24 @@
+<div class="conteudo-login">
+  <mat-card>
+      <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+      <mat-card-content>
+         <form [formGroup]="loginForm" novalidate>
+           <div class="container-login">
+             <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput  placeholder="Email" name="email" >
+             </mat-form-field>
+             <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Senha" name="password" >
+             </mat-form-field>
+           </div>
+         </form>
+      </mat-card-content>
+      <mat-card-actions>
+         <button mat-raised-button color="primary">Login</button>
+      </mat-card-actions>
+   </mat-card>
+</div>
