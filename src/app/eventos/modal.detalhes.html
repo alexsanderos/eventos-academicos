@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>{{data.evento.titulo}}</h2>
+<mat-dialog-content class="mat-typography">
+  <p>
+      <strong>Data de Início:</strong> {{data.evento.dataInicio}} <br>
+      <strong>Data de Fim:</strong> {{data.evento.dataFim}}
+  </p>
+    <p>
+    <strong>Categoria:</strong> {{data.evento.categoria}} 
+       <br>
+      <strong>Subtítulo:</strong> {{data.evento.subtitulo}}
+      <br>
+      <strong>Descricao:</strong> {{data.evento.descricao}}
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>
