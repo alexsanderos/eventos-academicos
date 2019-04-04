@@ -16,11 +16,11 @@ export class EventosComponent implements OnInit {
       {titulo: 'Meetup sobre .Net C#, .Net Framework',  
         subtitulo: 'Uma reunião para compartilhar conhecimento sobre .Net C#.', 
          descricao: 'Tem interesse em programação, desenvolvimento web, C#, .Net? Venha ao evento!',
-          dataInicio: '22/12/2019 15:00', dataFim: '22/12/2019 18:00', categoria: 'Desenvolvimento' },
+          dataInicio: '22/12/2019 15:00', dataFim: '22/12/2019 18:00', categoria: 'Desenvolvimento', idUsuario: 0 },
        {titulo: 'AWS Porto Alegre',  
           subtitulo: 'Conheça como o Triider usa sua arquitetura na AWS.', 
            descricao: 'Vamos realizar o Meetup desse mês com três apresentações de peso, o pessoal da Umov.me irá falar um pouco sobre Lambda + DynamoDB, o pessoal do Triider irá palestra sobre sua arquitetura na AWS, e por fim o Fabio Alves irá palestrar sobre Arquitetura Serverless.',
-            dataInicio: '22/12/2019 15:00', dataFim: '22/12/2019 18:00', categoria: 'DevOps' }
+            dataInicio: '22/12/2019 15:00', dataFim: '22/12/2019 18:00', categoria: 'DevOps', idUsuario: 33  }
     ]
   }
 
@@ -52,6 +52,7 @@ export class Evento {
   descricao: string;
   dataInicio: string;
   dataFim: string;
+  idUsuario: number;
 }
 
 @Component({

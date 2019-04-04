@@ -15,7 +15,10 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-button (click)="openDialog()">Quero ir!</a>
+          <a mat-button (click)="openDialog()">
+            <span *ngIf="evento.idUsuario == 0">Quero ir!</span>
+            <span *ngIf="evento.idUsuario > 0">Desistir!</span>
+          </a>
           <a mat-button (click)="abrirDetalhes(evento)">Detalhes!</a>
         </mat-card-actions>
       </mat-card>

@@ -14,8 +14,23 @@
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
+              <mat-label>CPF</mat-label>
+              <input type="cpf" matInput placeholder="CPF">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Data de nascimento</mat-label>
+              <input type="dataNascimento" matInput placeholder="Data de nascimento">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Email</mat-label>
               <input type="email" matInput placeholder="Email">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Instituição/Empresa</mat-label>
+              <input type="empresaInstituicao" matInput placeholder="Nome da instituição ou nome da empresa">
             </mat-form-field>
             
             <mat-form-field class="full-width" appearance="outline">
@@ -32,6 +47,7 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" type="submit">Salvar</button>
+        <button mat-raised-button color="default" [routerLink]="['/lista-eventos']">Cancelar</button>
       </mat-card-actions>
     </mat-card>
   </form>
