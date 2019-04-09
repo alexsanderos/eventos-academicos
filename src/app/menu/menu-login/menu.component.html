@@ -1,0 +1,4 @@
+<span *ngIf="usuarioLogado()">Olá {{user.userName}}</span>
+<a mat-button [routerLink]="['/eventos']">Eventos</a>
+<button mat-button *ngIf="!usuarioLogado()" [routerLink]="['/auth/login']"> Login</button>
+<button mat-button *ngIf="usuarioLogado()" (click)="logout()"> Logout</button>

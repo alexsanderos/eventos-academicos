@@ -7,6 +7,6 @@
   }
   
   .eventos-header-image {
-    background-image: url('../../assets/csharp-logo.png');
+    background-image: url('../../../assets/csharp-logo.png');
     background-size: cover;
   }

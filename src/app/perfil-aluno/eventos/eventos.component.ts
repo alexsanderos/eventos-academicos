@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog,  MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
+import { EventoService } from 'src/app/services/evento/evento.service';
 
 @Component({
   selector: 'app-eventos',
@@ -9,19 +10,16 @@ import { Router } from '@angular/router';
 })
 export class EventosComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private router: Router) { }
+  constructor(public dialog: MatDialog, 
+    private router: Router,
+    private eventoService: EventoService) { }
   eventos: any = [];
   ngOnInit() {
-    this.eventos = [
-      {titulo: 'Meetup sobre .Net C#, .Net Framework',  
-        subtitulo: 'Uma reunião para compartilhar conhecimento sobre .Net C#.', 
-         descricao: 'Tem interesse em programação, desenvolvimento web, C#, .Net? Venha ao evento!',
-          dataInicio: '22/12/2019 15:00', dataFim: '22/12/2019 18:00', categoria: 'Desenvolvimento', idUsuario: 0 },
-       {titulo: 'AWS Porto Alegre',  
-          subtitulo: 'Conheça como o Triider usa sua arquitetura na AWS.', 
-           descricao: 'Vamos realizar o Meetup desse mês com três apresentações de peso, o pessoal da Umov.me irá falar um pouco sobre Lambda + DynamoDB, o pessoal do Triider irá palestra sobre sua arquitetura na AWS, e por fim o Fabio Alves irá palestrar sobre Arquitetura Serverless.',
-            dataInicio: '22/12/2019 15:00', dataFim: '22/12/2019 18:00', categoria: 'DevOps', idUsuario: 33  }
-    ]
+
+    this.eventoService.obterTodos()
+      .subscribe(
+        eventos => this.eventos = eventos
+      );
   }
 
   openDialog() {
@@ -29,7 +27,7 @@ export class EventosComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
         if(result)
-          this.router.navigateByUrl('/login');
+          this.router.navigateByUrl('/auth/login');
     });
   }
 
@@ -49,10 +47,8 @@ export class EventosComponent implements OnInit {
 export class Evento {
   titulo: string;
   subtitulo: string;
-  descricao: string;
-  dataInicio: string;
-  dataFim: string;
-  idUsuario: number;
+  descricaoCurta: string;
+  descricaoLonga: string;
 }
 
 @Component({

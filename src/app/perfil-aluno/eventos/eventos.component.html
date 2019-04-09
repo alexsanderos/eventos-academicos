@@ -1,4 +1,5 @@
-
+<!--The content below is only a placeholder and can be replaced.-->
+<app-navegacao></app-navegacao>
 <div class="conteudo">
     <mat-card class="eventos-card" *ngFor="let evento of eventos">
         <mat-card-header>
@@ -11,13 +12,12 @@
         </mat-card-header>
         <mat-card-content>
           <p>
-            {{ evento.descricao }}
+            {{ evento.descricaoCurta }}
           </p>
         </mat-card-content>
         <mat-card-actions>
           <a mat-button (click)="openDialog()">
-            <span *ngIf="evento.idUsuario == 0">Quero ir!</span>
-            <span *ngIf="evento.idUsuario > 0">Desistir!</span>
+            <span>Quero ir!</span>
           </a>
           <a mat-button (click)="abrirDetalhes(evento)">Detalhes!</a>
         </mat-card-actions>

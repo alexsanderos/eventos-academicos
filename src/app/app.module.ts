@@ -2,42 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatInputModule, MatSelectModule, MatRadioModule, MatDialog, MatDialogModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatMenuModule, MatInputModule, MatSelectModule, MatRadioModule, MatDialog, MatDialogModule, MatDatepickerModule, MatNativeDateModule, MatSnackBarModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { NevegacaoComponent } from './nevegacao/nevegacao.component';
-import { EventosComponent, ModalConfirmacao, ModalDetalhes } from './eventos/eventos.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
+import {NgxMaskModule} from 'ngx-mask';
+import { HttpClientModule } from '@angular/common/http';
 
-const appRoutes: Routes = [
-      { path: 'lista-eventos', component: EventosComponent },
-      { path: 'cadastro-usuario', component: CadastroComponent },
-      { path: 'login', component: LoginComponent }
-    ];
+import { rootRouterConfig } from './app.routes';
+import { AppComponent } from './app.component';
+import { CadastroComponent } from './usuario/cadastro/cadastro.component';
+import { LoginComponent } from './usuario/login/login.component';
+import { DashboardComponent } from './perfil-aluno/dashboard/dashboard.component';
+import { PerfilAlunoModule } from './perfil-aluno/perfil.aluno.module';
+import { MenuModule } from './menu/menu.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    NevegacaoComponent,
     CadastroComponent,
-    LoginComponent,
-    EventosComponent,
-    ModalConfirmacao,
-    ModalDetalhes
-  ],
-  entryComponents: [
-    ModalConfirmacao,
-    ModalDetalhes
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     LayoutModule,
-    MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
@@ -46,14 +35,25 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(rootRouterConfig),
     MatInputModule,
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaskModule.forRoot(),
+    MatSnackBarModule,
+    MatCheckboxModule,
+    PerfilAlunoModule,
+    MenuModule
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule
+  ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
