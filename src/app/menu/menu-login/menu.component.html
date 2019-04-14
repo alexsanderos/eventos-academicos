@@ -1,4 +1,16 @@
 <span *ngIf="usuarioLogado()">Olá {{nome}}</span>
 <a mat-button [routerLink]="['/eventos']">Eventos</a>
 <button mat-button *ngIf="!usuarioLogado()" [routerLink]="['/auth/login']"> Login</button>
-<button mat-button *ngIf="usuarioLogado()" (click)="logout()"> Logout</button>
+<button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>
+        <mat-icon>event</mat-icon>
+        <span>Meus eventos</span>
+    </button>
+    <button mat-menu-item *ngIf="usuarioLogado()" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+            <span>Logout</span>
+    </button>
+</mat-menu>

@@ -1,0 +1,52 @@
+<app-navegacao></app-navegacao>
+<div class="conteudo">
+  <form [formGroup]="cadastroForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Novo evento</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="container-cadastro">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Título</mat-label>
+              <input matInput placeholder="Título do evento (requerido)" formControlName="titulo">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Subtítulo</mat-label>
+                <input matInput placeholder="Subtítulo do evento (requerido)" formControlName="subtitulo">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Número de vagas</mat-label>
+                <input matInput placeholder="Número de vagas (requerido)" formControlName="vagas">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Categoria</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let categoria of categorias" formControlName="categoria" [value]="categoria.value">
+                    {{categoria.nome}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Descrição curta</mat-label>
+                <input matInput placeholder="Descrição curta (requerido)" formControlName="descricaoCurta">
+            </mat-form-field>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <textarea matInput placeholder="Descrição longa (requerido)" formControlName="descricaoLonga"></textarea>
+            </mat-form-field>
+
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Salvar</button>
+        <button mat-raised-button color="default" [routerLink]="['/admin-evento']">Cancelar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

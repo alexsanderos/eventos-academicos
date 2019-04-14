@@ -7,7 +7,7 @@ import { AuthService } from '../services/auth/auth.service';
 import { ErrorInterceptor } from '../services/error.handler.service';
 import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatMenuModule } from '@angular/material';
 
-import { eventosRouterConfig } from './evento.routes';
+import { alunoRouterConfig } from './aluno.routes';
 import { MenuModule } from '../menu/menu.module';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { MenuModule } from '../menu/menu.module';
     MatDialogModule,
     MatCardModule,
     MatButtonModule,
-    RouterModule.forChild(eventosRouterConfig),
+    RouterModule.forChild(alunoRouterConfig),
     MenuModule
   ],
   providers: [

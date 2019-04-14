@@ -14,15 +14,14 @@ export class MenuComponent implements OnInit {
   constructor(private router: Router) {
     this.token = localStorage.getItem('event.token');
     var usuario = localStorage.getItem('event.user');
-    if(!(usuario === undefined || usuario === 'undefined')) {
+    if(usuario != undefined && usuario != 'undefined' && usuario != null ) {
       this.user = JSON.parse(localStorage.getItem('event.user'));
-      this.nome = this.user.nome;
     }
    }
 
   ngOnInit() {
     if(this.user)
-        this.nome = this.user.userName;
+        this.nome = this.user.nome;
   }
 
   usuarioLogado(): boolean {

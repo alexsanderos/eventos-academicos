@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from '../base.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Evento } from 'src/app/perfil-aluno/eventos/eventos.component';
+import { Evento } from 'src/app/models/evento';
 
 @Injectable({
   providedIn: 'root'

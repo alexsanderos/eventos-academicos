@@ -44,13 +44,6 @@ export class EventosComponent implements OnInit {
   }
 }
 
-export class Evento {
-  titulo: string;
-  subtitulo: string;
-  descricaoCurta: string;
-  descricaoLonga: string;
-}
-
 @Component({
   selector: 'modal-confirmacao',
   templateUrl: './modal.confirmacao.html',

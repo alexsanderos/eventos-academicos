@@ -1,0 +1,58 @@
+<app-navegacao></app-navegacao>
+<div class="conteudo">
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Lista de eventos</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource">
+          
+              <!-- Position Column -->
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="titulo">
+                <th mat-header-cell *matHeaderCellDef> Título </th>
+                <td mat-cell *matCellDef="let element"> {{element.titulo}} </td>
+              </ng-container>
+          
+              <!-- Weight Column -->
+              <ng-container matColumnDef="subtitulo">
+                <th mat-header-cell *matHeaderCellDef> Subtítulo </th>
+                <td mat-cell *matCellDef="let element"> {{element.subtitulo}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="edit">
+                  <th mat-header-cell *matHeaderCellDef>Ações</th>
+                  <td mat-cell *matCellDef="let element"> 
+                      <button mat-icon-button>
+                          <mat-icon aria-label="Editar" >edit</mat-icon>
+                      </button>
+                      <button mat-icon-button>
+                          <mat-icon aria-label="Remover" >remove_circle_outline</mat-icon>
+                      </button>
+                      <button mat-icon-button>
+                          <mat-icon aria-label="Cadastrados" >list</mat-icon>
+                      </button>
+                   </td>
+                </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+          </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="acoes">
+        <button mat-stroked-button color="primary" [routerLink]="['/admin-evento/novo']">Novo</button>
+      </div>
+    </mat-card-actions>
+</mat-card>
+</div>
+

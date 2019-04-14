@@ -18,6 +18,7 @@ import { PerfilAlunoModule } from './perfil-aluno/perfil.aluno.module';
 import { MenuModule } from './menu/menu.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { PerfilAdminModule } from './perfil-admin/perfil-admin.module';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { environment } from '../environments/environment';
     MatSnackBarModule,
     MatCheckboxModule,
     PerfilAlunoModule,
+    PerfilAdminModule,
     MenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
