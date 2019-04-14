@@ -51,7 +51,6 @@ export class CadastroComponent {
   }
 
   onSaveComplete(response: any): void {
-    debugger;
     localStorage.setItem('event.token', response.access_token);
     localStorage.setItem('event.user', JSON.stringify(response.user));
 
@@ -69,5 +68,4 @@ export class CadastroComponent {
     });
     this.errors = fail.errors;
   }
-
 }
