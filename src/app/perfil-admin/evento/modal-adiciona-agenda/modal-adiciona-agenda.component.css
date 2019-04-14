@@ -1,11 +1,4 @@
-.conteudo {
-    max-width:  90%;
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .full-width {
+.full-width {
     width: 100%;
   }
   
@@ -26,9 +19,5 @@
   
   .container-cadastro > * {
     width: 100%;
-  }
-
-  .tabela-agendamentos {
-    margin-bottom: 20px;
   }
   

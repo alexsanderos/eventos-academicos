@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule, MatPaginatorModule, MatCardModule, MatButtonModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatCardModule, MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatDialogModule, MatDatepickerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 import { ListaComponent } from './lista/lista.component';
 import { MenuModule } from 'src/app/menu/menu.module';
 import { EditaComponent } from './edita/edita.component';
 import { RouterModule } from '@angular/router';
 import { NovoComponent } from './novo/novo.component';
+import { ModalAdicionaAgendaComponent } from './modal-adiciona-agenda/modal-adiciona-agenda.component';
 
 @NgModule({
-  declarations: [ListaComponent, EditaComponent, NovoComponent],
+  declarations: [ListaComponent, EditaComponent, NovoComponent, ModalAdicionaAgendaComponent],
+  entryComponents: [
+    ModalAdicionaAgendaComponent
+  ],
   imports: [
     CommonModule,
     MatTableModule,
@@ -22,6 +27,9 @@ import { NovoComponent } from './novo/novo.component';
     MatInputModule,
     MatSelectModule,
     RouterModule,
+    MatDialogModule,
+    NgxMaterialTimepickerModule,
+    MatDatepickerModule,
     MenuModule
   ]
 })
