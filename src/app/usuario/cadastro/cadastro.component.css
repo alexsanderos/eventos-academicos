@@ -1,3 +1,10 @@
+.conteudo {
+  max-width:  90%;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .full-width {
   width: 100%;
 }

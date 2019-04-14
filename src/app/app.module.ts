@@ -16,6 +16,8 @@ import { LoginComponent } from './usuario/login/login.component';
 import { DashboardComponent } from './perfil-aluno/dashboard/dashboard.component';
 import { PerfilAlunoModule } from './perfil-aluno/perfil.aluno.module';
 import { MenuModule } from './menu/menu.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { MenuModule } from './menu/menu.module';
     MatSnackBarModule,
     MatCheckboxModule,
     PerfilAlunoModule,
-    MenuModule
+    MenuModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     MatDatepickerModule
