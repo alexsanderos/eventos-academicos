@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatTableModule, MatPaginatorModule, MatCardModule, MatButtonModule, MatIconModule, MatInputModule, MatSelectModule, MatDialogModule, MatDatepickerModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { NgxMaskModule } from 'ngx-mask';
 
 import { ListaComponent } from './lista/lista.component';
 import { MenuModule } from 'src/app/menu/menu.module';
@@ -30,6 +31,7 @@ import { ModalAdicionaAgendaComponent } from './modal-adiciona-agenda/modal-adic
     MatDialogModule,
     NgxMaterialTimepickerModule,
     MatDatepickerModule,
+    NgxMaskModule.forRoot(),
     MenuModule
   ]
 })

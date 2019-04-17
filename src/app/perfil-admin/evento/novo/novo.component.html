@@ -19,13 +19,13 @@
 
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Número de vagas</mat-label>
-                <input matInput placeholder="Número de vagas (requerido)" formControlName="vagas">
+                <input matInput placeholder="Número de vagas (requerido)" mask="999999999" formControlName="vagas">
             </mat-form-field>
 
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Categoria</mat-label>
-                <mat-select>
-                  <mat-option *ngFor="let categoria of categorias" formControlName="categoria" [value]="categoria.value">
+                <mat-select formControlName="idCategoria">
+                  <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">
                     {{categoria.nome}}
                   </mat-option>
                 </mat-select>

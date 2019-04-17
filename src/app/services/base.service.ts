@@ -1,8 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { Usuario } from "../usuario/models/usuario";
-import { Observable } from 'rxjs';
-
 export abstract class BaseService {
   protected UrlServiceV1: string = "http://localhost:58849/api/v1/";
 
@@ -37,15 +34,17 @@ export abstract class BaseService {
 
     protected serviceError(error: Response | any){
         let errMsg: string;
-
+        let errorShow: string;
+        debugger;
         if (error instanceof Response) {
-
+            if(error.status == 400) {
+                errorShow =`${error.status} - ${error.statusText || ''}`; 
+            }
             errMsg = `${error.status} - ${error.statusText || ''}`;
         }
         else {
             errMsg = error.message ? error.message : error.toString();
         }
-        console.error(error);
-        return Observable.throw(error);
+        return errorShow;
     }
 }

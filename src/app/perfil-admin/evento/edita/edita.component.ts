@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoriaService } from 'src/app/services/categoria/categoria.service';
 
 @Component({
   selector: 'app-edita',
@@ -20,8 +21,12 @@ export class EditaComponent implements OnInit {
     descricaoLonga: ['']
   });
 
-  constructor(private fb: FormBuilder,
-    private router: Router) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private categoriaService: CategoriaService) {
+      
+     }
 
   ngOnInit() {
   }
