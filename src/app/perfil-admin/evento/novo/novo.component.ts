@@ -15,13 +15,14 @@ import { EventoService } from 'src/app/services/evento/evento.service';
   styleUrls: ['./novo.component.css']
 })
 export class NovoComponent implements OnInit {
+  spinner: boolean = false;
   evento: Evento = new Evento;
   categorias: any [] = []; 
   agendamentos: any[] = [];
   errors: any[] = [];
   dataSource = new MatTableDataSource<Agenda>();
 
-  agendamentosColunas: string[] = ['dataInicial', 'dataFinal', 'acao'];
+  agendamentosColunas: string[] = ['dataInicio', 'dataFim', 'acao'];
 
   cadastroForm = this.fb.group({
     titulo: [null, Validators.required],
@@ -64,13 +65,20 @@ export class NovoComponent implements OnInit {
   }
 
   removerAgendamento(item){
-    
+    let index = this.agendamentos.indexOf(item, 0);
+    if (index > -1) {
+      this.agendamentos.splice(index, 1);
+    }
+    this.dataSource = new MatTableDataSource<Agenda>(this.agendamentos);
   }
 
   onSubmit(){
     if( this.cadastroForm.dirty && this.cadastroForm.valid ) {
+      debugger;
+      this.spinner = true;
       let evento = Object.assign({}, this.evento, this.cadastroForm.value);
-      
+      evento.agendamentos = this.agendamentos;
+
       this.eventoService.cadastrar(evento)
       .subscribe( result => {
         this.onSaveComplete(result) 
@@ -81,7 +89,7 @@ export class NovoComponent implements OnInit {
   }
 
   onSaveComplete(response: any): void {
-    debugger;
+    this.spinner = false;
     this.snackBar.open('Cadastro efetuado com sucesso!', 'Cadastro', {
       duration: 2000,
     });
@@ -89,6 +97,8 @@ export class NovoComponent implements OnInit {
   }
 
   onError(fail) {
+    debugger;
+    this.spinner = false;
     if(fail.error.success === false) {
       this.errors = fail.error.errors;
     }

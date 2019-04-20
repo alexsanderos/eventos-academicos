@@ -45,8 +45,8 @@ export class ModalAdicionaAgendaComponent implements OnInit {
       dataFinal.setHours(h);
       dataFinal.setMinutes(m);
 
-      this.agendamento.dataInicial = dataInicial;
-      this.agendamento.dataFinal = dataFinal;
+      this.agendamento.dataInicio = dataInicial;
+      this.agendamento.dataFim = dataFinal;
       this.dialogRef.close(this.agendamento);
     }
   }

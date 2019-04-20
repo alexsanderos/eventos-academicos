@@ -1,4 +1,5 @@
 export class Agenda {
-    dataInicial: Date;
-    dataFinal: Date;
+    eventoId: string;
+    dataInicio: Date;
+    dataFim: Date;
   }

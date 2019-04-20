@@ -10,7 +10,7 @@ export const adminRouterConfig: Routes = [
         path: 'admin-evento',
         children: [
             { path: '', component: ListaComponent },
-            { path: 'editar', component: EditaComponent },
+            { path: 'editar/:id', component: EditaComponent },
             { path: 'novo', component: NovoComponent }
             //{ path: 'novo', canActivate: [AuthService], component: AdicionarEventoComponent, data: [{ claim: { nome: 'Eventos', valor: 'Gravar' } }] },
         ]
