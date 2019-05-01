@@ -5,7 +5,9 @@
     <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-    <button mat-menu-item>
+    <button *ngIf="usuarioLogado()" mat-menu-item [routerLink]="['/eventos']" 
+        [queryParams]="{ meusEventos:  'true' }"
+        queryParamsHandling="merge">
         <mat-icon>event</mat-icon>
         <span>Meus eventos</span>
     </button>

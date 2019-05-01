@@ -1,8 +1,9 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog,  MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { EventoService } from 'src/app/services/evento/evento.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-eventos',
@@ -10,25 +11,39 @@ import { EventoService } from 'src/app/services/evento/evento.service';
   styleUrls: ['./eventos.component.css']
 })
 export class EventosComponent implements OnInit {
+  eventos: any = [];
+  errors: any [] = [];
+  meusEventos: any = '';
+  spinner: boolean = false;
+  sub: Subscription;
+  usuario: any = JSON.parse(localStorage.getItem('event.user'));
+
 
   constructor(public dialog: MatDialog, 
     private router: Router,
     private eventoService: EventoService,
-    private snackBar: MatSnackBar) { }
-  eventos: any = [];
-  errors: any [] = [];
-
-  ngOnInit() {
-
-    this.eventoService.obterTodos()
-      .subscribe(
-        eventos => {
-          this.eventos = eventos;
-        });
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar) { 
+    }
+    
+    ngOnInit() {
+      this.sub = this.route.queryParams.subscribe(
+        params => {
+          this.meusEventos = params['meusEventos'];
+          if(this.meusEventos){
+            this.carregaMeusEventos();
+          } else{
+            this.carregaEventos();
+          }
+        }
+      );
   }
 
-  openDialog(evento) {
-    const dialogRef = this.dialog.open(ModalConfirmacao);
+  openQueroIr(evento) {
+    const dialogRef = this.dialog.open(ModalConfirmacao, {
+      data: {
+        texto: "Gostaria de se inscrever no evento?"
+      }});
 
     dialogRef.afterClosed().subscribe(result => {
         if(result){
@@ -37,8 +52,22 @@ export class EventosComponent implements OnInit {
     });
   }
 
+  openDesistir(evento) {
+    const dialogRef = this.dialog.open(ModalConfirmacao, {
+      data: {
+        texto: "Gostaria de desistir do evento?"
+      }});
+
+    dialogRef.afterClosed().subscribe(result => {
+        if(result){
+          this.desistir(evento.id);
+        }
+    });
+  }
+
   abrirDetalhes(evento) {
     const dialogRef = this.dialog.open(ModalDetalhes, {
+      width: '700px',
       data: {
         evento: evento
       }
@@ -49,8 +78,57 @@ export class EventosComponent implements OnInit {
     });
   }
 
+  carregaEventos(){
+    this.spinner = true;
+    this.eventoService.obterTodos()
+    .subscribe(
+      eventos => {
+        this.spinner = false;
+        this.eventos = eventos;
+      });
+  }
+
+  carregaMeusEventos(){
+    this.spinner = true;
+    this.eventoService.obterMeusEventos()
+    .subscribe(
+      eventos => {
+        this.spinner = false;
+        this.eventos = eventos;
+      });
+  }
+
+  usuarioJaInteressado(evento) {
+    let interessado = false;
+    if(this.usuario == null || this.usuario == undefined || this.usuario == "") {
+      return interessado;
+    }
+
+    for (let index = 0; index < evento.usuarioEventos.length; index++) {
+      const uev = evento.usuarioEventos[index];
+
+      if(uev.idUsuario === this.usuario.id){
+        interessado = true;
+      }
+    }
+    return interessado;
+  }
+
   queroIr(id) {
-    this.eventoService.queroIrEvento(id)
+    if(this.usuario == null || this.usuario == undefined || this.usuario == "") {
+      this.router.navigate(['/auth/login']);
+    } else{
+      this.eventoService.queroIrEvento(id)
+        .subscribe( result => {
+          this.onSaveComplete(result) 
+        }, error => {
+          this.onError(error) 
+        });
+    }
+  }
+
+  desistir(id) {
+    this.eventoService.desistirEvento(id)
       .subscribe( result => {
         this.onSaveComplete(result) 
       }, error => {
@@ -59,7 +137,13 @@ export class EventosComponent implements OnInit {
   }
 
   onSaveComplete(response: any): void {
-    this.snackBar.open('Registro de interesse efetuado com sucesso!', 'Quero ir!', {
+    if(this.meusEventos){
+      this.carregaMeusEventos();
+    } else{
+      this.carregaEventos();
+    }
+
+    this.snackBar.open('Registro de efetuado com sucesso!', 'Quero ir!', {
       duration: 2000,
     });
   }
@@ -111,7 +195,9 @@ export class EventosComponent implements OnInit {
   selector: 'modal-confirmacao',
   templateUrl: './modal.confirmacao.html',
 })
-export class ModalConfirmacao {}
+export class ModalConfirmacao {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: []) {}
+}
 
 @Component({
   selector: 'modal-detalhes',
@@ -119,5 +205,4 @@ export class ModalConfirmacao {}
 })
 export class ModalDetalhes {
   constructor(@Inject(MAT_DIALOG_DATA) public data: []) {}
-
 }

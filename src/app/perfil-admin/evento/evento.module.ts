@@ -11,9 +11,17 @@ import { EditaComponent } from './edita/edita.component';
 import { RouterModule } from '@angular/router';
 import { NovoComponent } from './novo/novo.component';
 import { ModalAdicionaAgendaComponent } from './modal-adiciona-agenda/modal-adiciona-agenda.component';
+import { ListaInscritosComponent } from './lista-inscritos/lista-inscritos.component';
 
 @NgModule({
-  declarations: [ListaComponent, EditaComponent, NovoComponent, ModalAdicionaAgendaComponent, ModalConfirmacao],
+  declarations: [
+    ListaComponent, 
+    EditaComponent, 
+    NovoComponent, 
+    ModalAdicionaAgendaComponent, 
+    ModalConfirmacao, 
+    ListaInscritosComponent
+  ],
   entryComponents: [
     ModalAdicionaAgendaComponent,
     ModalConfirmacao

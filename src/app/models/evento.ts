@@ -1,5 +1,6 @@
 import { Agenda } from './agenda';
 import { Categoria } from './categoria';
+import { UsuarioEvento } from './usuarioEvento';
 
 export class Evento {
     id: string;
@@ -10,5 +11,6 @@ export class Evento {
     descricaoCurta: string;
     descricaoLonga: string;
     agendamentos: Agenda[];
-    categoria: Categoria
+    categoria: Categoria;
+    usuarioEventos: UsuarioEvento[];
   }

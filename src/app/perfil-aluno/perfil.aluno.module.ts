@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from '../services/auth/auth.service';
 import { ErrorInterceptor } from '../services/error.handler.service';
-import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatProgressSpinnerModule, MatListModule } from '@angular/material';
 
 import { alunoRouterConfig } from './aluno.routes';
 import { MenuModule } from '../menu/menu.module';
@@ -25,6 +25,9 @@ import { MenuModule } from '../menu/menu.module';
     MatDialogModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatListModule,
     RouterModule.forChild(alunoRouterConfig),
     MenuModule
   ],

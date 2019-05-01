@@ -12,3 +12,21 @@
     background-image: url('../../../assets/csharp-logo.png');
     background-size: cover;
   }
+
+  .icone-check {
+    color: #28a745;    
+  }
+
+  .overlay {
+    position: absolute;
+    z-index: 1002;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+  }
+  
+.spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50%;
+}

@@ -1,14 +1,25 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <app-navegacao></app-navegacao>
 <div class="conteudo">
+    <div class="overlay" *ngIf="spinner">
+        <div class="spinner-wrapper">
+            <mat-progress-spinner 
+                    class="example-margin"
+                    color="primary"
+                    mode="indeterminate"
+                    value="50">
+            </mat-progress-spinner>                        
+        </div>
+    </div>
     <mat-card class="eventos-card" *ngFor="let evento of eventos">
         <mat-card-header>
+          <mat-icon *ngIf="usuarioJaInteressado(evento)" class="icone-check">check_circle_outline</mat-icon>
           <div mat-card-avatar class="eventos-header-image"></div>
           <mat-card-title>{{ evento.titulo }}</mat-card-title>
           <mat-card-subtitle>
             {{ evento.subtitulo }} 
             <br /> <small>Data Início: {{ obterDataInicioMenor(evento.agendamentos) | date:'dd/MM/yyyy HH:mm' }} - Data Fim: {{ obterDataFimMaior(evento.agendamentos) | date:'dd/MM/yyyy HH:mm' }}</small> 
-            <br /> <small>Vagas: {{evento.vagas}}</small>
+            <br /> <small>Vagas: {{ evento.vagas - evento.usuarioEventos.length }} de {{evento.vagas}} Vagas </small>
           </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
@@ -17,9 +28,12 @@
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-button (click)="openDialog(evento)">
+          <a mat-button *ngIf="!usuarioJaInteressado(evento)" (click)="openQueroIr(evento)">
             <span>Quero ir!</span>
           </a>
+          <a mat-button *ngIf="usuarioJaInteressado(evento)"  (click)="openDesistir(evento)">
+              <span >Desistir!</span>
+            </a>
           <a mat-button (click)="abrirDetalhes(evento)">Detalhes!</a>
         </mat-card-actions>
       </mat-card>
