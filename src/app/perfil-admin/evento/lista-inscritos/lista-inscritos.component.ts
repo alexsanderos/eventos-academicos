@@ -3,9 +3,11 @@ import { MatTableDataSource, MatPaginator, MatDialog, MatSnackBar } from '@angul
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
+
 import { Usuario } from 'src/app/usuario/models/usuario';
 import { EventoService } from 'src/app/services/evento/evento.service';
 import { Evento } from 'src/app/models/evento';
+import { ExportService } from 'src/app/services/export/export.service';
 
 @Component({
   selector: 'app-lista-inscritos',
@@ -19,14 +21,15 @@ export class ListaInscritosComponent implements OnInit {
   errors: any[] = [];
   sub: Subscription;
   eventoId: string = "";
-  evento: Evento;
+  evento: Evento = new Evento();
   
   displayedColumns: string[] = ['id', 'nome', 'cpf'];
   dataSource = new MatTableDataSource<Usuario>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private eventoService: EventoService, 
+  constructor(private eventoService: EventoService,
+    private exportService:ExportService, 
     private dialog: MatDialog,
     private router: Router,
     private snackBar: MatSnackBar,
@@ -34,7 +37,6 @@ export class ListaInscritosComponent implements OnInit {
 
   ngOnInit() {
     this.spinner = true;
-
     this.sub = this.route.params.subscribe(
       params => {
         this.eventoId = params['id'];
@@ -59,6 +61,10 @@ export class ListaInscritosComponent implements OnInit {
         duration: 5000,
       });
     }
+  }
+
+  exportInscritos() {
+    this.exportService.exportAsExcelFile(this.inscritos, 'Lista de Inscritos');
   }
 
   onLoadComplete(usuarios: Usuario[]){

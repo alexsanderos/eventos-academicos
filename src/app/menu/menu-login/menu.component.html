@@ -8,8 +8,12 @@
     <button *ngIf="usuarioLogado()" mat-menu-item [routerLink]="['/eventos']" 
         [queryParams]="{ meusEventos:  'true' }"
         queryParamsHandling="merge">
-        <mat-icon>event</mat-icon>
+        <mat-icon>event_available</mat-icon>
         <span>Meus eventos</span>
+    </button>
+    <button *ngIf="usuarioLogado() && exibirItemMenu([{claim: { nome: 'Evento', valor: 'Gravar' } }])" mat-menu-item [routerLink]="['/admin-evento']">
+        <mat-icon>event</mat-icon>
+        <span>Admin eventos</span>
     </button>
     <button mat-menu-item *ngIf="usuarioLogado()" (click)="logout()">
             <mat-icon>exit_to_app</mat-icon>

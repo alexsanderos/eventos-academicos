@@ -4,6 +4,7 @@ import { MatTableModule, MatPaginatorModule, MatCardModule, MatButtonModule, Mat
 import { ReactiveFormsModule } from '@angular/forms';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgxMaskModule } from 'ngx-mask';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ListaComponent, ModalConfirmacao } from './lista/lista.component';
 import { MenuModule } from 'src/app/menu/menu.module';
@@ -12,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { NovoComponent } from './novo/novo.component';
 import { ModalAdicionaAgendaComponent } from './modal-adiciona-agenda/modal-adiciona-agenda.component';
 import { ListaInscritosComponent } from './lista-inscritos/lista-inscritos.component';
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { ErrorInterceptor } from 'src/app/services/error.handler.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,14 @@ import { ListaInscritosComponent } from './lista-inscritos/lista-inscritos.compo
     MatDatepickerModule,
     NgxMaskModule.forRoot(),
     MenuModule
+  ],
+  providers: [
+    AuthService,        
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass: ErrorInterceptor,
+        multi: true
+     }
   ]
 })
 export class EventoModule { }

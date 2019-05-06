@@ -13,19 +13,19 @@ import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
 import { CadastroComponent } from './usuario/cadastro/cadastro.component';
 import { LoginComponent } from './usuario/login/login.component';
-import { DashboardComponent } from './perfil-aluno/dashboard/dashboard.component';
 import { PerfilAlunoModule } from './perfil-aluno/perfil.aluno.module';
 import { MenuModule } from './menu/menu.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { PerfilAdminModule } from './perfil-admin/perfil-admin.module';
+import { AcessoNegadoComponent } from './error/acesso-negado/acesso-negado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
     CadastroComponent,
-    LoginComponent
+    LoginComponent,
+    AcessoNegadoComponent
   ],
   imports: [
     BrowserModule,

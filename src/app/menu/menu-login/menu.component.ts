@@ -28,6 +28,22 @@ export class MenuComponent implements OnInit {
     return this.token !== null && this.token !== 'undefined';
   }
 
+  exibirItemMenu(claim): boolean {
+    if (claim) {
+      if (!this.user.claims) {
+          return false;
+      }
+      
+      let userClaims = this.user.claims.some(x => x.type === claim.nome && x.value === claim.valor);
+      if (!userClaims) {
+          return false;
+      }
+      return true;
+    } else{
+      return false;
+    }
+  }
+
   logout() {
     localStorage.removeItem('event.token');
     localStorage.removeItem('event.user');

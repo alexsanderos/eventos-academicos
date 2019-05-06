@@ -9,8 +9,7 @@ export const alunoRouterConfig: Routes = [
     {
         path: 'eventos', component: EventosComponent,
         children: [
-            { path: '', component: EventosComponent },
-            //{ path: 'novo', canActivate: [AuthService], component: AdicionarEventoComponent, data: [{ claim: { nome: 'Eventos', valor: 'Gravar' } }] },
+            { path: '', component: EventosComponent }
         ]
     }
 ];

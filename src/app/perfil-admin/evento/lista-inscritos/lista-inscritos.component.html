@@ -45,7 +45,8 @@
     </mat-card-content>
     <mat-card-actions>
       <div class="acoes">
-        <button mat-stroked-button color="primary">Exportar</button>
+        <button mat-stroked-button color="primary" (click)="exportInscritos()">Exportar</button>
+        <button mat-stroked-button color="default" class="voltar" [routerLink]="['/admin-evento']">Voltar</button> 
       </div>
     </mat-card-actions>
 </mat-card>

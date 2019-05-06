@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 export abstract class BaseService {
-  protected UrlServiceV1: string = "http://localhost:58849/api/v1/";
+  protected UrlServiceV1: string = "http://appevent.azurewebsites.net/api/v1/";
 
     protected ObterHeaderJson(){
         return {
@@ -15,6 +15,15 @@ export abstract class BaseService {
         return {
             headers: new HttpHeaders({
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.obterTokenUsuario()}`
+            })
+        };
+    }
+
+    protected ObterAuthHeaderExcel(){
+        return {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                 'Authorization': `Bearer ${this.obterTokenUsuario()}`
             })
         };

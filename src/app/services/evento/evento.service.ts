@@ -16,11 +16,11 @@ export class EventoService extends BaseService{
   constructor(private http: HttpClient) { super(); }
 
   obterTodos(): Observable<Evento[]> {
-    return this.http.get<Evento[]>(this.UrlServiceV1 + "eventos", super.ObterAuthHeaderJson() );
+    return this.http.get<Evento[]>(this.UrlServiceV1 + "eventos", super.ObterAuthHeaderJson());
   }
 
   obterMeusEventos(): Observable<Evento[]> {
-    return this.http.get<Evento[]>(this.UrlServiceV1 + "eventos/meus-eventos", super.ObterAuthHeaderJson() );
+    return this.http.get<Evento[]>(this.UrlServiceV1 + "eventos/meus-eventos", super.ObterAuthHeaderJson());
   }
 
   obterEvento(id): Observable<Evento> {
@@ -32,7 +32,8 @@ export class EventoService extends BaseService{
   }
 
   obterInscritos(id): Observable<Usuario[]> {
-    return this.http.get<Usuario[]>(this.UrlServiceV1 + "eventos/" + id + "/inscritos", super.ObterAuthHeaderJson() );
+    return this.http.get<Usuario[]>(this.UrlServiceV1 + "eventos/" + id + "/inscritos",
+          super.ObterAuthHeaderJson());
   }
 
   cadastrar(evento: Evento): Observable<Evento> {
