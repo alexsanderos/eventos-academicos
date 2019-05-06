@@ -196,7 +196,7 @@ export class EventosComponent implements OnInit {
   templateUrl: './modal.confirmacao.html',
 })
 export class ModalConfirmacao {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: []) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }
 
 @Component({
@@ -204,5 +204,5 @@ export class ModalConfirmacao {
   templateUrl: './modal.detalhes.html',
 })
 export class ModalDetalhes {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: []) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 }

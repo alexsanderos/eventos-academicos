@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 export abstract class BaseService {
-  protected UrlServiceV1: string = "http://appevent.azurewebsites.net/api/v1/";
+  protected UrlServiceV1: string = "https://appevent.azurewebsites.net/api/v1/";
 
     protected ObterHeaderJson(){
         return {

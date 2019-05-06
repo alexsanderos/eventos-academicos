@@ -29,6 +29,10 @@ export class ModalAdicionaAgendaComponent implements OnInit {
 
   }
 
+  onSubmit() {
+
+  }
+
   adicionar() {
     if( this.adicionaForm.dirty && this.adicionaForm.valid ) {
       var dataInicial = this.adicionaForm.get('dataInicial').value;
